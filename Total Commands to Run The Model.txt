@@ -1,0 +1,40 @@
+For Video inference- 
+
+1. ffmpeg -i samples/nameofvideo.mp4 -vf fps=25 samples/temp/nameofvideo%06d.png
+
+2. python face_test.py --input_dir samples/temp for face only videos (can be used for partyly facedtoo but then manually arrange the numbers of phtos generated from 1 upto ur lking).
+
+or,   python test.py --input_dir samples/temp for scenic enhanced with ray tracing
+
+3. ffmpeg -i samples/results/video name%06d.png -vf fps=25 -pix_fmt yuv420p samples/video name.mp4 
+
+or if error ocuurs use this, 
+ffmpeg -i samples/results/video name%06d.png -vf "fps=30,scale=trunc(iw/2)*2:trunc(ih/2)*2" -pix_fmt yuv420p samples/video name_result.mp4
+
+and with videos that have not all frames face capture use this command to concatenate all frames ina single ouput video (change the names of files in result folder in a sequential manner ) 
+for example -
+
+ffmpeg -start_number 1 -i "samples/results/child000002 (%d).png" -vf "fps=30,scale=trunc(iw/2)*2:trunc(ih/2)*2" -pix_fmt yuv420p "samples/child000002_result.mp4"
+
+
+
+For Phtos Only-
+
+python face_test.py For enhanced Face ANime
+
+python test.py    Fort Enhanced Environment Scenic
+
+(same way just activate env u are done like this
+
+cd C:\
+
+cd AnimeGANv2
+
+.\AnimeGANv2\scripts\activate
+
+cd 
+
+Run ur python files for phtos or videos
+
+
+
